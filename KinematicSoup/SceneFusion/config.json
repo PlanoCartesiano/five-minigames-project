@@ -1,0 +1,9 @@
+{
+	"projectId": 1,
+	"projectName": "five-minigames-project",
+	"scene": "SampleScene",
+	"creator": "PlanoCartesiano",
+	"version": "2.0.3",
+	"port": 8000,
+	"application": "Unity 2022.3.62f1"
+}

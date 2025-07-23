@@ -1,0 +1,39 @@
+2025-07-23 00:15:20.7229 [INFO; Root]  KinematicSoup Technologies Inc.
+2025-07-23 00:15:20.7277 [INFO; Root]  Scene Fusion Server 2.0.3asl
+2025-07-23 00:15:20.8114 [DEBUG; Root]  Loading Asset Scripts
+2025-07-23 00:15:20.8126 [DEBUG; Root]  Loading Room Configs
+2025-07-23 00:15:20.8141 [DEBUG; Root]  Loading entity prefabs
+2025-07-23 00:15:20.8142 [DEBUG; Root]  Loading entity instances
+2025-07-23 00:15:20.8146 [DEBUG; Root]  Initializing scripts
+2025-07-23 00:15:20.8602 [INFO; Root]  Loading config.json
+2025-07-23 00:15:20.8603 [INFO; Root]  ProjectId: 1
+2025-07-23 00:15:20.8603 [INFO; Root]  Tier: SF Unity LAN
+2025-07-23 00:15:20.8604 [INFO; Root]  Terrain Editing: True
+2025-07-23 00:15:20.8604 [INFO; Root]  Object Limit: Unlimited
+2025-07-23 00:15:20.9922 [DEBUG; Root]  Room setup complete
+2025-07-23 00:15:20.9927 [INFO;  .⁋]  Starting room 0
+2025-07-23 00:15:20.9928 [INFO; Root]  Sending client updates every 6 frames
+2025-07-23 00:15:20.9929 [INFO; Root]  Setting player limit to 2
+2025-07-23 00:15:21.0386 [INFO; Root]  Opening TCP port 8000
+2025-07-23 00:15:21.8003 [INFO; Root]  Client(id = 1, address = 127.0.0.1:52165) connected
+2025-07-23 00:15:21.8043 [DEBUG; Root]  Client(id = 1, address = 127.0.0.1:52165) model validated
+2025-07-23 00:15:21.8296 [DEBUG; Root]  Client(id = 1, address = 127.0.0.1:52165) authenticated
+2025-07-23 00:15:21.8465 [INFO; KS.SceneFusion2.Server.srAuthenticationManager]  Connection [account = PlanoCartesiano, address = 127.0.0.1]
+2025-07-23 00:15:23.5298 [DEBUG; KS.SceneFusion2.Server.srObjectManager]  Created 1 object(s).
+Total: 80 B (1), SceneSubscriptions: 41 B (1), String Table: 39 B
+2025-07-23 00:15:23.5315 [DEBUG; KS.SceneFusion2.Server.srObjectManager]  Created 1 object(s).
+Total: 105 B (2), String Table: 48 B, SceneSubscriptions: 41 B (1), SceneLock: 16 B (1)
+2025-07-23 00:15:23.5322 [DEBUG; KS.SceneFusion2.Server.srObjectManager]  Created 1 object(s).
+Total: 362 B (3), Avatar: 174 B (1), String Table: 131 B, SceneSubscriptions: 41 B (1), SceneLock: 16 B (1)
+2025-07-23 00:15:23.6766 [DEBUG; KS.SceneFusion2.Server.srObjectManager]  Created 1 object(s).
+Total: 537 B (4), String Table: 236 B, Avatar: 174 B (1), SceneSubscriptions: 57 B (1), AssetPath: 54 B (1), SceneLock: 16 B (1)
+2025-07-23 00:15:23.6767 [DEBUG; KS.SceneFusion2.Server.srObjectManager]  Created 1 object(s).
+Total: 720 B (5), String Table: 365 B, Avatar: 174 B (1), AssetPath: 108 B (2), SceneSubscriptions: 57 B (1), SceneLock: 16 B (1)
+2025-07-23 00:15:23.6767 [DEBUG; KS.SceneFusion2.Server.srObjectManager]  Created 1 object(s).
+Total: 896 B (6), String Table: 487 B, Avatar: 174 B (1), AssetPath: 162 B (3), SceneSubscriptions: 57 B (1), SceneLock: 16 B (1)
+2025-07-23 00:15:23.6787 [DEBUG; KS.SceneFusion2.Server.srObjectManager]  Created 39 object(s).
+Total: 6.58 kB (45), String Table: 2.84 kB, GameObject: 1.16 kB (15), LightmapSettings: 836 B (1), Component: 770 B (19), RenderSettings: 458 B (1), Avatar: 174 B (1), AssetPath: 162 B (3), OcclusionSettings: 67 B (1), SceneSubscriptions: 57 B (1), Scene: 24 B (1), SceneLock: 16 B (1), Hierarchy: 16 B (1)
+2025-07-23 00:15:32.6787 [INFO;  .⁋]  Stopping room 0
+2025-07-23 00:15:32.6797 [DEBUG; KS.SceneFusion2.Server.srAnalytics]  Sending analytics data...
+2025-07-23 00:15:33.0506 [DEBUG; KS.SceneFusion2.Server.srAnalytics]  Analytics event recorded succesfully.
+2025-07-23 00:15:33.0821 [INFO; Root]  Closing TCP port 8000
