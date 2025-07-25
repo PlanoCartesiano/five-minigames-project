@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovementHandler : MonoBehaviour
 {
     public float moveSpeed;
-    public int jumpForce;
+    public float jumpForce;
     public Rigidbody2D rigidB;
 
     void Start()
@@ -13,16 +13,14 @@ public class MovementHandler : MonoBehaviour
         
     }
 
-    void FixedUpdate()
-    {
-        Move();
-    }
-
-    #region Move 
-    private void Move()
+    void Update()
     {
         rigidB.velocity = new Vector2(moveSpeed, rigidB.velocity.y);
+
+        if(Input.GetButtonDown("Jump"))
+        { 
+            rigidB.velocity = new Vector2(rigidB.velocity.x, jumpForce);
+        }
     }
-    #endregion
 }
 
