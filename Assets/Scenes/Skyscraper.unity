@@ -182,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 83403200}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.99, y: -1.81, z: 0}
+  m_LocalPosition: {x: -13.99, y: -2.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -300,7 +300,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -324,9 +324,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5992f88a67267954c92a66601b11fb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
-  jumpForce: 8
   rigidB: {fileID: 83403204}
+  moveSpeed: 1
+  jumpForce: 12
+  groundCheckDistance: 0.6
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &224586549
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +342,7 @@ GameObject:
   - component: {fileID: 224586550}
   - component: {fileID: 224586551}
   - component: {fileID: 224586552}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: obj_ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
