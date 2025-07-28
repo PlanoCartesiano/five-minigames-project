@@ -5,6 +5,10 @@ using UnityEngine;
 public class MovementHandler : MonoBehaviour
 {
     public Rigidbody2D rigidB;
+    private bool playerUnlocked = true;
+    private bool isDead = false;
+    private bool isGrounded;
+    private bool wallDetected;
 
     [Header("Movement Info")]
     [SerializeField] private float moveSpeed;
@@ -13,6 +17,8 @@ public class MovementHandler : MonoBehaviour
     [Header("Slide Info")]
     [SerializeField] private float slideSpeed;
     [SerializeField] private float slideTime;
+    [SerializeField] private float slideCooldown;
+    private float slideCooldownCounter;
     private float slideTimeCounter;
     private bool isSliding;
 
@@ -22,15 +28,6 @@ public class MovementHandler : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private Vector2 wallCheckSize;
 
-    private bool isGrounded;
-    private bool wallDetected;
-    private bool playerUnlocked = true;
-
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         Move();
@@ -38,6 +35,8 @@ public class MovementHandler : MonoBehaviour
         SlideCounter();
         CheckSlideInput();
         CheckForSlide();
+        CheckDeathCoroutine();
+        
     }
 
     private void FixedUpdate()
@@ -58,6 +57,10 @@ public class MovementHandler : MonoBehaviour
             {
                 rigidB.velocity = new Vector2(moveSpeed, rigidB.velocity.y);
             }
+        }
+        else if (isDead)
+        {
+            rigidB.velocity = Vector2.zero;
         }
     }
     #endregion
@@ -82,17 +85,19 @@ public class MovementHandler : MonoBehaviour
     }
 
     void CheckSlideInput()
-    { 
-        if (Input.GetButtonDown("Fire1") && isGrounded == true)
+    {
+        if (Input.GetButtonDown("Fire1") && isGrounded == true && slideCooldownCounter < 0) 
         {
             isSliding = true;
             slideTimeCounter = slideTime;
+            slideCooldownCounter = slideCooldown;
         }
     }
-    
+
     void SlideCounter()
     {
         slideTimeCounter -= Time.deltaTime;
+        slideCooldownCounter -= Time.deltaTime;
     }
 
     void CheckForSlide()
@@ -114,6 +119,26 @@ public class MovementHandler : MonoBehaviour
     {
         Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - groundCheckDistance));
         Gizmos.DrawWireCube(wallCheck.position, wallCheckSize);
+    }
+    #endregion
+
+    #region Death
+
+    private void CheckDeathCoroutine()
+    {
+        if (Input.GetKeyDown(KeyCode.O) && !isDead)
+            {
+                StartCoroutine(Die());
+            }
+    }
+
+    private IEnumerator Die()
+    {
+        isDead = true;
+        playerUnlocked = false;
+        yield return new WaitForSeconds(2f);
+        rigidB.velocity = new Vector2(0f, 0f);
+        GameManager.instance.RestartLevel();
     }
     #endregion
 }
