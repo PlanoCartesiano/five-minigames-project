@@ -328,6 +328,8 @@ MonoBehaviour:
   rigidB: {fileID: 83403204}
   moveSpeed: 6
   jumpForce: 16
+  slideSpeed: 6
+  slideTime: 0.6
   groundCheckDistance: 1
   whatIsGround:
     serializedVersion: 2

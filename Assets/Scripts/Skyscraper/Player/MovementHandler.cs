@@ -9,7 +9,12 @@ public class MovementHandler : MonoBehaviour
     [Header("Movement Info")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
-    
+
+    [Header("Slide Info")]
+    [SerializeField] private float slideSpeed;
+    [SerializeField] private float slideTime;
+    private float slideTimeCounter;
+    private bool isSliding;
 
     [Header("Collision Info")]
     [SerializeField] private float groundCheckDistance;
@@ -19,6 +24,7 @@ public class MovementHandler : MonoBehaviour
 
     private bool isGrounded;
     private bool wallDetected;
+    private bool playerUnlocked = true;
 
     void Start()
     {
@@ -29,6 +35,9 @@ public class MovementHandler : MonoBehaviour
     {
         Move();
         Jump();
+        SlideCounter();
+        CheckSlideInput();
+        CheckForSlide();
     }
 
     private void FixedUpdate()
@@ -39,7 +48,17 @@ public class MovementHandler : MonoBehaviour
     #region Move
     void Move()
     {
-            rigidB.velocity = new Vector2(moveSpeed, rigidB.velocity.y);
+        if (playerUnlocked && !wallDetected)
+        {
+            if (isSliding)
+            {
+                Slide();
+            }
+            else
+            {
+                rigidB.velocity = new Vector2(moveSpeed, rigidB.velocity.y);
+            }
+        }
     }
     #endregion
 
@@ -49,6 +68,38 @@ public class MovementHandler : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
             rigidB.velocity = new Vector2(rigidB.velocity.x, jumpForce);
+        }
+    }
+    #endregion
+
+    #region Slide
+    void Slide()
+    {
+        if (isSliding)
+        {
+            rigidB.velocity = new Vector2(slideSpeed, rigidB.velocity.y);
+        }
+    }
+
+    void CheckSlideInput()
+    { 
+        if (Input.GetButtonDown("Fire1") && isGrounded == true)
+        {
+            isSliding = true;
+            slideTimeCounter = slideTime;
+        }
+    }
+    
+    void SlideCounter()
+    {
+        slideTimeCounter -= Time.deltaTime;
+    }
+
+    void CheckForSlide()
+    {
+        if (slideTimeCounter < 0)
+        {
+            isSliding = false;
         }
     }
     #endregion
