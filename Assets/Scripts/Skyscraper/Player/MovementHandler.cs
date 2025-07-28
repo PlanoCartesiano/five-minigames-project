@@ -7,14 +7,18 @@ public class MovementHandler : MonoBehaviour
     public Rigidbody2D rigidB;
 
     [Header("Movement Info")]
-    public float moveSpeed;
-    public float jumpForce;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpForce;
     
 
     [Header("Collision Info")]
-    public float groundCheckDistance;
-    public LayerMask whatIsGround;
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private Transform wallCheck;
+    [SerializeField] private Vector2 wallCheckSize;
+
     private bool isGrounded;
+    private bool wallDetected;
 
     void Start()
     {
@@ -53,10 +57,12 @@ public class MovementHandler : MonoBehaviour
     void CheckCollision()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+        wallDetected = Physics2D.BoxCast(wallCheck.position, wallCheckSize, 0, Vector2.zero, 0, whatIsGround);
     }
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - groundCheckDistance));
+        Gizmos.DrawWireCube(wallCheck.position, wallCheckSize);
     }
     #endregion
 }
