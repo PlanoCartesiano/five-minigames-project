@@ -10,10 +10,6 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private float distanceToSpawn;
     [SerializeField] private float distanceToDelete;
     [SerializeField] private Transform player;
-    void Start()
-    {
-
-    }
 
     void Update()
     {

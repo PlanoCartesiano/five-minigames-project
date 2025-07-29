@@ -35,7 +35,7 @@ public class MovementHandler : MonoBehaviour
         SlideCounter();
         CheckSlideInput();
         CheckForSlide();
-        CheckDeathCoroutine();
+        //CheckDeathCoroutine();
         
     }
 
@@ -110,6 +110,18 @@ public class MovementHandler : MonoBehaviour
     #endregion
 
     #region Collision
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Danger":
+                StartCoroutine(Die());
+            break;
+                
+        }
+    }
+
     void CheckCollision()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
@@ -132,14 +144,16 @@ public class MovementHandler : MonoBehaviour
             }
     }
 
-    private IEnumerator Die()
+    public IEnumerator Die()
     {
         isDead = true;
         playerUnlocked = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         rigidB.velocity = new Vector2(0f, 0f);
         GameManager.instance.RestartLevel();
     }
     #endregion
+
+
 }
 

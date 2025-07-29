@@ -328,7 +328,7 @@ MonoBehaviour:
   rigidB: {fileID: 83403204}
   moveSpeed: 6
   jumpForce: 16
-  slideSpeed: 20
+  slideSpeed: 6
   slideTime: 0.6
   slideCooldown: 1
   groundCheckDistance: 1
@@ -948,9 +948,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelPart:
   - {fileID: 7815102501884041525, guid: 4989c7d0ebe5c934193dce4e2639c5a9, type: 3}
+  - {fileID: 7815102501884041525, guid: f9c78bb4235cbc84683595eea54d5427, type: 3}
+  - {fileID: 7815102501884041525, guid: 59e2f0a61ada6684e85606cfcf9fde25, type: 3}
+  - {fileID: 7815102501884041525, guid: fd5d83cafdbc2aa439ab37df1ae59166, type: 3}
   nextPartPosition: {x: 0, y: 0, z: 0}
   distanceToSpawn: 50
-  distanceToDelete: 50
+  distanceToDelete: 100
   player: {fileID: 83403201}
 --- !u!1 &703505205
 GameObject:
@@ -1363,6 +1366,18 @@ PrefabInstance:
     - target: {fileID: 3673149580366188800, guid: 4989c7d0ebe5c934193dce4e2639c5a9, type: 3}
       propertyPath: m_Name
       value: obj_level_part
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982193051522030359, guid: 4989c7d0ebe5c934193dce4e2639c5a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854940855376355203, guid: 4989c7d0ebe5c934193dce4e2639c5a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583741953958855314, guid: 4989c7d0ebe5c934193dce4e2639c5a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7815102501884041525, guid: 4989c7d0ebe5c934193dce4e2639c5a9, type: 3}
       propertyPath: m_LocalPosition.x
