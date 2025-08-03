@@ -18,6 +18,7 @@ public class MovementHandler : MonoBehaviour
     [SerializeField] private float slideSpeed;
     [SerializeField] private float slideTime;
     [SerializeField] private float slideCooldown;
+    [SerializeField] private float slideExtraGravity = 10f;
     private float slideCooldownCounter;
     private float slideTimeCounter;
     private bool isSliding;
@@ -28,6 +29,11 @@ public class MovementHandler : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private Vector2 wallCheckSize;
 
+    void Awake()
+    {
+        rigidB = GetComponent<Rigidbody2D>();
+    }
+
     void Update()
     {
         Move();
@@ -35,8 +41,6 @@ public class MovementHandler : MonoBehaviour
         SlideCounter();
         CheckSlideInput();
         CheckForSlide();
-        //CheckDeathCoroutine();
-        
     }
 
     private void FixedUpdate()
@@ -80,13 +84,21 @@ public class MovementHandler : MonoBehaviour
     {
         if (isSliding)
         {
-            rigidB.velocity = new Vector2(slideSpeed, rigidB.velocity.y);
+            if (isGrounded)
+            {
+                rigidB.velocity = new Vector2(slideSpeed, rigidB.velocity.y);
+            }
+
+            if (!isGrounded)
+            {
+                rigidB.velocity = new Vector2(slideSpeed, -slideExtraGravity);
+            }
         }
     }
 
     void CheckSlideInput()
     {
-        if (Input.GetButtonDown("Fire1") && isGrounded == true && slideCooldownCounter < 0) 
+        if (Input.GetButtonDown("Fire1") && slideCooldownCounter < 0) 
         {
             isSliding = true;
             slideTimeCounter = slideTime;
@@ -135,14 +147,6 @@ public class MovementHandler : MonoBehaviour
     #endregion
 
     #region Death
-
-    private void CheckDeathCoroutine()
-    {
-        if (Input.GetKeyDown(KeyCode.O) && !isDead)
-            {
-                StartCoroutine(Die());
-            }
-    }
 
     public IEnumerator Die()
     {
