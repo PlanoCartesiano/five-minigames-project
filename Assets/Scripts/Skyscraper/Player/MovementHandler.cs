@@ -128,6 +128,7 @@ public class MovementHandler : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Danger":
+                DistanceCounter.instance.SaveNewRecord();
                 StartCoroutine(Die());
             break;
                 

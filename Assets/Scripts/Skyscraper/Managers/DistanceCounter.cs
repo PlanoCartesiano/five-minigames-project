@@ -5,14 +5,22 @@ using UnityEngine;
 
 public class DistanceCounter : MonoBehaviour
 {
+    [Header("Singleton Instance")]
+    public static DistanceCounter instance;
+
     [Header("UI Reference")]
     public TextMeshProUGUI distanceText;
 
     [Header("Settings")]
-    public float speed = 6f;
+    private float speed = 6f;
 
-    private float distanceTraveled = 0f;
+    public float distanceTraveled = 0f;
     private bool isCounting = true;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Update()
     {
@@ -20,6 +28,18 @@ public class DistanceCounter : MonoBehaviour
 
         distanceTraveled += speed * Time.deltaTime;
         distanceText.text = Mathf.FloorToInt(distanceTraveled).ToString() + " m";
+    }
+
+    public void SaveNewRecord()
+    {
+        float lastBestRecords = PlayerPrefs.GetFloat("BestRecord", 0);
+
+        if (distanceTraveled > lastBestRecords)
+        {
+            PlayerPrefs.SetFloat("BestRecord", distanceTraveled);
+
+            PlayerPrefs.Save();
+        }
     }
 
     public void ResetCounter()
