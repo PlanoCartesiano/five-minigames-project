@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/StartSceneSkyscraper.unity
+    guid: f4036c85be442e747a930461a330d932
+  - enabled: 1
     path: Assets/Scenes/Skyscraper.unity
     guid: b3f1d74052a62b44b9787276b074eba1
   m_configObjects: {}

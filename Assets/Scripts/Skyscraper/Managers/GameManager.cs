@@ -12,5 +12,5 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
     }
-    public void RestartLevel() => SceneManager.LoadScene(1);
+    public void RestartLevel() => SceneManager.LoadScene(2);
 }

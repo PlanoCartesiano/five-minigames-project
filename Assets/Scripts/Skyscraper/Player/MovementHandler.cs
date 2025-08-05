@@ -72,7 +72,7 @@ public class MovementHandler : MonoBehaviour
     #region Jump
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded == true)
+        if (Input.GetButtonDown("Jump") && isGrounded == true && !isSliding)
         {
             rigidB.velocity = new Vector2(rigidB.velocity.x, jumpForce);
         }
