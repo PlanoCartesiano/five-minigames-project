@@ -42,6 +42,11 @@ public class DistanceCounter : MonoBehaviour
         }
     }
 
+    public float GetDistance()
+    {
+        return distanceTraveled;
+    }
+
     public void ResetCounter()
     {
         distanceTraveled = 0f;

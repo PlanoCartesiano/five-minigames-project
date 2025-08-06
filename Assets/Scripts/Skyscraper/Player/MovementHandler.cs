@@ -23,6 +23,13 @@ public class MovementHandler : MonoBehaviour
     private float slideTimeCounter;
     private bool isSliding;
 
+    [Header("Speed Controller")]
+    private float baseMoveSpeed = 6f;
+    private float baseSlideSpeed = 12f;
+    public float distanceStep = 500f;
+    public float speedIncrement = 1f;
+    public float maxSpeedMultiplier = 2.5f;
+
     [Header("Collision Info")]
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask whatIsGround;
@@ -41,6 +48,7 @@ public class MovementHandler : MonoBehaviour
         SlideCounter();
         CheckSlideInput();
         CheckForSlide();
+        UpdateSpeedByDistance();
     }
 
     private void FixedUpdate()
@@ -118,6 +126,20 @@ public class MovementHandler : MonoBehaviour
         {
             isSliding = false;
         }
+    }
+    #endregion
+
+    #region Speed Increaser
+    private void UpdateSpeedByDistance()
+    {
+        float distance = DistanceCounter.instance.GetDistance();
+        int steps = Mathf.FloorToInt(distance / distanceStep);
+
+        float maxMoveSpeed = baseMoveSpeed * maxSpeedMultiplier;
+        float maxSlideSpeed = baseSlideSpeed * maxSpeedMultiplier;
+
+        moveSpeed = Mathf.Min(baseMoveSpeed + (steps * speedIncrement), maxMoveSpeed);
+        slideSpeed = Mathf.Min(baseSlideSpeed + (steps * speedIncrement), maxSlideSpeed);
     }
     #endregion
 

@@ -332,6 +332,9 @@ MonoBehaviour:
   slideTime: 0.3
   slideCooldown: 1
   slideExtraGravity: 20
+  distanceStep: 50
+  speedIncrement: 1
+  maxSpeedMultiplier: 2.5
   groundCheckDistance: 1
   whatIsGround:
     serializedVersion: 2
