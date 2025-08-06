@@ -25,7 +25,7 @@ public class MovementHandler : MonoBehaviour
 
     [Header("Speed Controller")]
     private float baseMoveSpeed = 6f;
-    private float baseSlideSpeed = 12f;
+    private float baseSlideSpeed = 6f;
     public float distanceStep = 500f;
     public float speedIncrement = 1f;
     public float maxSpeedMultiplier = 2.5f;
@@ -180,7 +180,6 @@ public class MovementHandler : MonoBehaviour
         GameManager.instance.RestartLevel();
     }
     #endregion
-
 
 }
 
